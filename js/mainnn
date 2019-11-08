@@ -1,0 +1,52 @@
+var i = 0;
+function checkNum(el){
+	var num = el.value;
+	i++;
+		if(parseInt(num[num.length - 1])){
+			if(i != 5 && i <= 9 ){
+				if(i == 9){
+					num = num.split("");
+					if(num[4] == " "){
+						console.log("phone number");
+						// 8888 8888 (8888-8888) (+97688888888)
+					} else {
+						console.log("did not");
+					}
+				} else if(i > 9){
+					console.log("did not");
+				}
+			}
+		}
+		if(num == ""){
+			i = 0;
+		}		
+}
+var years = document.getElementsByClassName("years")[0];
+//console.log(years);
+//1964 - 2020
+calcDate(1964 , 2020 , years);
+var yrs = new Date().getFullYear();
+var mnth = new Date().getMonth();
+function getDayyy(el , type){
+	var days = document.getElementsByClassName('dayss')[0];
+		if(type == "year"){
+			yrs = el.value
+		} else if(type == "month"){
+			mnth = el.value;
+		}
+	var date = 32 - new Date(yrs , mnth , 32).getDate();
+	calcDate(0 , date , days);
+}
+function calcDate(min , max , el){
+	for(var i=min; i >= max ; i--){	
+		var opt = document.createElement("option");
+		opt.value = i;
+		opt.innerText = i;
+		el.appendChild(opt);
+	}
+}
+//var day = new Date(2019 , 7).getDay();
+
+
+
+
